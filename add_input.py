@@ -1,0 +1,6 @@
+title = input('Введите заголовок заметки:')
+content = input('Введите текст заметки:')
+status = input('Введите статус заметки:')
+created_date = input('Введите дату создания заметки в формате день.месяц.год:')
+issue_date = input('Введите дату истечения заметки в формате день.месяц.год:')
+print(title, content, status, created_date, issue_date)
