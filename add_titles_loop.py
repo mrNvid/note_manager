@@ -4,6 +4,10 @@ print('Введите заголовоки по очереди или остав
 while title_input !="":
     title_input = input("Заголовок:")
     while title_input !="":
-        title_list.append(title_input)
+        if title_input in title_list:
+            print("Заголовок уже существует")
+        else:
+            title_list.append(title_input)
+            print("Добавлено")
         break
-print(title_list)
+print("Все заголовки:", title_list)
