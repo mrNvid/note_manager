@@ -2,12 +2,16 @@ from datetime import date
 
 today = date.today()
 print("Текущая дата:",today.strftime("%d.%m.%Y"))
-print("Введите дату дедлайна (в формате день-месяц-год):")
-issue_date = input().split('-')
-print(issue_date)
-day, month, year = [int(item) for item in issue_date]
-issue_date.reverse()
-issue_date = date(year, month, day)
+while True:
+    try:
+        print("Введите дату дедлайна (в формате дд-мм-гггг):")
+        issue_date = input().split('-')
+        day, month, year = [int(item) for item in issue_date]
+        issue_date.reverse()
+        issue_date = date(year, month, day)
+        break
+    except:
+        print("Ошибка ввода, попробуйте ещё раз")
 delta_date = issue_date - today
 if int(delta_date.days) >1:
     print(delta_date.days, "дней осталось до дедлайна")
