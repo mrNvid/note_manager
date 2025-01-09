@@ -40,7 +40,7 @@ while True:
 
 print('Все заметки:')
 a=0
-for i in range(len(names)):
+for i in range(len('Имя')):
     print('_____________________')
     note = notes[a]
     a=a+1
