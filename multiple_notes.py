@@ -39,10 +39,8 @@ while True:
         print(e)
 
 print('Все заметки:')
-a=0
 for i in range(len('Имя')):
     print('_____________________')
-    note = notes[a]
-    a=a+1
+    note = notes[i]
     for key, values in note.items():
         print(key,':', values)
