@@ -13,10 +13,34 @@ print("Вы можете добавить новую заметку:")
 while True:
     try:
         print('Новая заметка:')
-        names.append(input('Введите имя:'))
-        title.append(input('Введите заголовок заметки:'))
-        content.append(input('Введите текст заметки:'))
-        status.append(input('Введите статус заметки:'))
+        while True:
+            names.append(input('Введите имя:'))
+            if names[len(names) - 1]:
+                break
+            else:
+                del names[len(names) - 1]
+                print("Вы ничего не ввели. Попробуйте снова")
+        while True:
+            title.append(input('Введите заголовок заметки:'))
+            if title[len(title) - 1]:
+                break
+            else:
+                del title[len(title) - 1]
+                print("Вы ничего не ввели. Попробуйте снова")
+        while True:
+            content.append(input('Введите текст заметки:'))
+            if content[len(content) - 1]:
+                break
+            else:
+                del content[len(content) - 1]
+                print("Вы ничего не ввели. Попробуйте снова")
+        while True:
+            status.append(input('Введите статус заметки:'))
+            if status[len(status) - 1]:
+                break
+            else:
+                del status[len(status) - 1]
+                print("Вы ничего не ввели. Попробуйте снова")
         while True:
             try:
                 created_date = input('Введите дату создания заметки в формате дд-мм-гггг:').split('-')
