@@ -7,7 +7,6 @@ content = []
 status = []
 created_dates = []
 issue_dates = []
-values = []
 print("Менеджер заметок")
 print("Вы можете добавить новую заметку:")
 while True:
@@ -48,7 +47,10 @@ while True:
                 created_date.reverse()
                 created_date = date(year, month, day)
                 created_dates.append(created_date)
-                break
+                if len(str(year)) == 4:
+                    break
+                else:
+                    print('Неверный формат, попробуйте ещё раз')
             except Exception as e:
                 print("Ошибка ввода, попробуйте ещё раз")
                 print(e)
@@ -59,7 +61,10 @@ while True:
                 issue_date.reverse()
                 issue_date = date(year, month, day)
                 issue_dates.append(issue_date)
-                break
+                if len(str(year)) == 4:
+                    break
+                else:
+                    print('Неверный формат, попробуйте ещё раз')
             except Exception as e:
                 print("Ошибка ввода, попробуйте ещё раз")
                 print(e)
