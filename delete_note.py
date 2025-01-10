@@ -9,17 +9,20 @@ for i in range(len(notes)):
     for key, values in note.items():
         print(key,':', values)
 condition_del = input('Введите имя пользователя или заголовок для удаления заметки:')
-for i in range(len('Имя')):
-    note = notes[i]
-    if condition_del == note['Имя'] or condition_del == note['Заголовок']:
-        del notes[i]
-        coincidences = 1
-        break
-if coincidences == 1:
-    print('Успешно удалено. Остались следующие заметки:')
-    for i in range(len(notes)):
-        print('_____________________')
+if len(notes) == 0:
+    print('Список заметок пуст!')
+else:
+    for i in range(len('Имя')):
         note = notes[i]
-        for key, values in note.items():
-            print(key, ':', values)
-else: print('Заметок с таким именем пользователя или заголовком не найдено.')
+        if condition_del == note['Имя'] or condition_del == note['Заголовок']:
+            del notes[i]
+            coincidences = 1
+            break
+    if coincidences == 1:
+        print('Успешно удалено. Остались следующие заметки:')
+        for i in range(len(notes)):
+            print('_____________________')
+            note = notes[i]
+            for key, values in note.items():
+                print(key, ':', values)
+    else: print('Заметок с таким именем пользователя или заголовком не найдено.')
