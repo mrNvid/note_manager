@@ -14,11 +14,12 @@ if len(notes) == 0:
 else:
     for i in range(len('Имя')):
         note = notes[i]
-        if condition_del == note['Имя'] or condition_del == note['Заголовок']:
+        if condition_del.lower() == note['Имя'].lower() or condition_del.lower() == note['Заголовок'].lower():
             del notes[i]
             coincidences = 1
             break
     if coincidences == 1:
+        print('-----------------------')
         print('Успешно удалено. Остались следующие заметки:')
         for i in range(len(notes)):
             print('_____________________')
