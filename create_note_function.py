@@ -1,5 +1,5 @@
 from datetime import date
-key = ['Имя', 'Заголовок', 'Заметка', 'Статус', 'Дедлайн', 'Дата создания']
+key = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
 variables = []
 def create_note():
     print('Новая заметка:')
@@ -47,7 +47,7 @@ def create_note():
     variables.append(date.today())
     note = dict(zip(key, variables))
     return note
-create_note()
+note = create_note()
 print('Ваша заметка:')
 print('_____________________')
 for key, values in note.items():
