@@ -2,7 +2,7 @@ from datetime import date
 
 notes = []
 variables = []
-key = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
+keys = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
 print("Менеджер заметок")
 print("Вы можете добавить новую заметку:")
 while True:
@@ -64,7 +64,7 @@ while True:
             except Exception as e:
                 print("Ошибка ввода, попробуйте ещё раз")
                 print(e)
-        note = dict(zip(key, variables))
+        note = dict(zip(keys, variables))
         notes.append(note)
         new_note = input("Хотите добавить ещё одну заметку? (да/нет)")
         if new_note == "нет":
