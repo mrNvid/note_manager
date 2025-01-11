@@ -8,7 +8,8 @@ def chek_date(value):
         try:
             value = value.split('-')
             day, month, year = [int(item) for item in value]
-            value = date(day, month,  year)
+            value.reverse()
+            value = date(year, month,  day)
             if len(str(year)) == 4:
                 return value
             else:
@@ -23,8 +24,13 @@ def update_note(note):
     print('_____________________')
     for key, values in note.items():
         print(key, ':', values)
-    print('Какие данные вы хотите обновить? (username, title, content, status, issue_date):')
-    argument = input()
+    while True:
+        print('Какие данные вы хотите обновить? (username, title, content, status, issue_date):')
+        argument = input()
+        if argument in note and argument !='created_date':
+            break
+        else:
+            print('Ошибка, попробуйте снова')
     while True:
         print('Введите новое значение:')
         value = input()
@@ -33,9 +39,12 @@ def update_note(note):
             if type(value) == str:
                 eror = chek_date(value)
                 print(eror)
-            else:break
+            else:
+                value = value.strftime('%d-%m-%Y')
+                break
         else:
             break
+
     note[argument] = value
     print('Заметка обновлена:')
     print('_____________________')
