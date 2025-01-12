@@ -1,5 +1,5 @@
 from datetime import date
-
+note = {}
 notes = []
 variables = []
 keys = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
@@ -64,7 +64,7 @@ while True:
             except Exception as e:
                 print("Ошибка ввода, попробуйте ещё раз")
                 print(e)
-        note = dict(zip(keys, variables))
+        note.update(zip(keys, variables))
         notes.append(note)
         new_note = input("Хотите добавить ещё одну заметку? (да/нет)")
         if new_note == "нет":
