@@ -1,40 +1,40 @@
 from datetime import date
-note = {}
+
 notes = []
-variables = []
-keys = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
 print("Менеджер заметок")
 print("Вы можете добавить новую заметку:")
 while True:
+    note = {'username': '', 'title': '', 'content': '', 'status': '', 'issue_date': '', 'created_date': ''}
     try:
         print('Новая заметка:')
+        notes.append(note)
         while True:
-            variables.append(input('Введите имя:'))
-            if variables[len(variables) - 1]:
+            username = (input('Введите имя:'))
+            note.update({'username': username})
+            if username:
                 break
             else:
-                del variables[len(variables) - 1]
                 print("Вы ничего не ввели. Попробуйте снова")
         while True:
-            variables.append(input('Введите заголовок заметки:'))
-            if variables[len(variables) - 1]:
+            title = (input('Введите заголовок:'))
+            note.update({'title': title})
+            if title:
                 break
             else:
-                del variables[len(variables) - 1]
                 print("Вы ничего не ввели. Попробуйте снова")
         while True:
-            variables.append(input('Введите текст заметки:'))
-            if variables[len(variables) - 1]:
+            content = (input('Введите описание:'))
+            note.update({'content': content})
+            if content:
                 break
             else:
-                del variables[len(variables) - 1]
                 print("Вы ничего не ввели. Попробуйте снова")
         while True:
-            variables.append(input('Введите статус заметки:'))
-            if variables[len(variables) - 1]:
+            status = (input('Введите статус:'))
+            note.update({'status': status})
+            if status:
                 break
             else:
-                del variables[len(variables) - 1]
                 print("Вы ничего не ввели. Попробуйте снова")
         while True:
             try:
@@ -42,7 +42,7 @@ while True:
                 day, month, year = [int(item) for item in issue_date]
                 issue_date.reverse()
                 issue_date = date(year, month, day)
-                variables.append(issue_date)
+                note.update({'issue_date': issue_date})
                 if len(str(year)) == 4:
                     break
                 else:
@@ -56,7 +56,7 @@ while True:
                 day, month, year = [int(item) for item in created_date]
                 created_date.reverse()
                 created_date = date(year, month, day)
-                variables.append(created_date)
+                note.update({'created_date': created_date})
                 if len(str(year)) == 4:
                     break
                 else:
@@ -64,8 +64,6 @@ while True:
             except Exception as e:
                 print("Ошибка ввода, попробуйте ещё раз")
                 print(e)
-        note.update(zip(keys, variables))
-        notes.append(note)
         new_note = input("Хотите добавить ещё одну заметку? (да/нет)")
         if new_note == "нет":
             break
