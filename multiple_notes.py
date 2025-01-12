@@ -52,7 +52,7 @@ while True:
                 print(e)
         while True:
             try:
-                created_date = input('Введите дату истечения заметки в формате дд-мм-гггг:').split('-')
+                created_date = input('Введите дату создания заметки в формате дд-мм-гггг:').split('-')
                 day, month, year = [int(item) for item in created_date]
                 created_date.reverse()
                 created_date = date(year, month, day)
@@ -72,7 +72,7 @@ while True:
     except Exception as e:
         print("Ошибка ввода, попробуйте ещё раз")
         print(e)
-
+print(notes)
 print('Все заметки:')
 for i in range(len(notes)):
     print('_____________________')
