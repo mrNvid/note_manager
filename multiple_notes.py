@@ -70,7 +70,6 @@ while True:
     except Exception as e:
         print("Ошибка ввода, попробуйте ещё раз")
         print(e)
-print(notes)
 print('Все заметки:')
 for i in range(len(notes)):
     print('_____________________')
