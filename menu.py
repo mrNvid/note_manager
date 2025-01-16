@@ -80,7 +80,19 @@ def display_notes(notes):
                 print(key, ':', values)
             print('_____________________')
 
-def update_note(note):
+def update_note(notes):
+    while True:
+        try:
+            print('Введите номер заметки, которую хотите обновить')
+            nomber_note = int(input('Введжите номер:')) - 1
+            if nomber_note <= len(notes):
+                break
+            else:
+                print("Вы ничего не ввели. Попробуйте снова")
+        except Exception as e:
+            print("Ошибка ввода, попробуйте ещё раз")
+            print(e)
+    note = notes[nomber_note]
     print('Ваша заметка:')
     print('_____________________')
     for key, values in note.items():
@@ -143,6 +155,11 @@ def delete_note():
             print(e)
 
 def search_notes(notes, keyword=None, status=None):
+    print('Вы можете ввести ключевое слово для поиска и/или нужный статус.')
+    print('Оставьте поле пустым, если критерий не требуется')
+    print('_____________________')
+    keyword = input('Введите ключевое слово:')
+    status = input('Введите нужный статус:')
     notes_view = []
     if keyword and not status:
         for i in range(len(notes)):
@@ -164,8 +181,21 @@ def search_notes(notes, keyword=None, status=None):
                 for key, values in note.items():
                     if values.lower() == keyword.lower():
                         notes_view.append(note)
+    if len(notes_view) == 0:
+        if len(notes) == 0:
+            print('Список заметок пуст')
+        else:
+            print('Совпадений не найдено')
+    else:
+        for i in range(len(notes_view)):
+            print('_____________________')
+            print('Заметка №', i + 1)
+            print('_____________________')
+            note = notes_view[i]
+            for key, values in note.items():
+                print(key, ':', values)
+            print('_____________________')
 
-    return notes_view
 
 print('Добро пожаловать в менеджер заметок!')
 while True:
@@ -187,30 +217,11 @@ while True:
     elif user_input == '2':
         display_notes(notes)
     elif user_input =='3':
-        update_note(note)
+        update_note(notes)
     elif user_input =='4':
         delete_note()
     elif user_input =='5':
-        print('Вы можете ввести ключевое слово для поиска и/или нужный статус.')
-        print('Оставьте поле пустым, если критерий не требуется')
-        print('_____________________')
-        keyword = input('Введите ключевое слово:')
-        status = input('Введите нужный статус:')
-        notes_view = search_notes(notes, keyword, status)
-        if len(notes_view) == 0:
-            if len(notes) == 0:
-                print('Список заметок пуст')
-            else:
-                print('Совпадений не найдено')
-        else:
-            for i in range(len(notes_view)):
-                print('_____________________')
-                print('Заметка №', i + 1)
-                print('_____________________')
-                note = notes_view[i]
-                for key, values in note.items():
-                    print(key, ':', values)
-                print('_____________________')
+        search_notes(notes)
     elif user_input =='6':
         print('_____________________')
         print('Программа завершена. Спасибо за использование!')
