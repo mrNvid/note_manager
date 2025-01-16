@@ -67,6 +67,7 @@ def create_note():
     variables.append(date.today())
     note = dict(zip(keys, variables))
     notes.append(note)
+    print('_____________________')
 
 def display_notes(notes):
     if len(notes) == 0:
@@ -100,13 +101,18 @@ def update_note(notes):
                     print('_____________________')
                     for key, values in note.items():
                         print(key, ':', values)
+                    print('_____________________')
                     while True:
                         print('Какие данные вы хотите обновить? (username, title, content, status, issue_date):')
                         argument = input()
                         if argument in note and argument != 'created_date':
                             break
+                        elif argument == 'created_date':
+                            print('Вы не можете изменить прошлое')
+                            print('_____________________')
                         else:
                             print('Ошибка, попробуйте снова')
+                            print('_____________________')
                     while True:
                         print('Введите новое значение:')
                         value = input()
@@ -130,7 +136,6 @@ def update_note(notes):
                 print('Заметок с таким именем пользователя или заголовком не найдено.')
     except Exception as e:
         print("Ошибка ввода, попробуйте ещё раз")
-        print(e)
 
 def delete_note():
     while True:
@@ -160,7 +165,6 @@ def delete_note():
                     print('Заметок с таким именем пользователя или заголовком не найдено.')
         except Exception as e:
             print("Ошибка ввода, попробуйте ещё раз")
-            print(e)
 
 def search_notes(notes, keyword=None, status=None):
     print('Вы можете ввести ключевое слово для поиска и/или нужный статус.')
