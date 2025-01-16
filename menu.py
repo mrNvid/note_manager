@@ -81,48 +81,56 @@ def display_notes(notes):
             print('_____________________')
 
 def update_note(notes):
-    while True:
-        try:
-            print('Введите номер заметки, которую хотите обновить')
-            nomber_note = int(input('Введжите номер:')) - 1
-            if nomber_note <= len(notes):
-                break
-            else:
-                print("Вы ничего не ввели. Попробуйте снова")
-        except Exception as e:
-            print("Ошибка ввода, попробуйте ещё раз")
-            print(e)
-    note = notes[nomber_note]
-    print('Ваша заметка:')
-    print('_____________________')
-    for key, values in note.items():
-        print(key, ':', values)
-    while True:
-        print('Какие данные вы хотите обновить? (username, title, content, status, issue_date):')
-        argument = input()
-        if argument in note and argument !='created_date':
-            break
+    try:
+        print('Все заметки:')
+        for i in range(len(notes)):
+            print('_____________________')
+            note = notes[i]
+            for key, values in note.items():
+                print(key, ':', values)
+        condition_del = input('Введите имя пользователя или заголовок для обновления заметки:')
+        if len(notes) == 0:
+            print('Список заметок пуст!')
         else:
-            print('Ошибка, попробуйте снова')
-    while True:
-        print('Введите новое значение:')
-        value = input()
-        if argument == 'issue_date':
-            value = chek_date(value)
-            if type(value) == str:
-                eror = chek_date(value)
-                print(eror)
+            for i in range(len('username')):
+                note = notes[i]
+                if condition_del.lower() == note['username'].lower() or condition_del.lower() == note['title'].lower():
+                    note = notes[i]
+                    print('Ваша заметка:')
+                    print('_____________________')
+                    for key, values in note.items():
+                        print(key, ':', values)
+                    while True:
+                        print('Какие данные вы хотите обновить? (username, title, content, status, issue_date):')
+                        argument = input()
+                        if argument in note and argument != 'created_date':
+                            break
+                        else:
+                            print('Ошибка, попробуйте снова')
+                    while True:
+                        print('Введите новое значение:')
+                        value = input()
+                        if argument == 'issue_date':
+                            value = chek_date(value)
+                            if type(value) == str:
+                                eror = chek_date(value)
+                                print(eror)
+                            else:
+                                value = value.strftime('%d-%m-%Y')
+                                break
+                        else:
+                            break
+                    note[argument] = value
+                    print('Заметка обновлена:')
+                    print('_____________________')
+                    for key, values in note.items():
+                        print(key, ':', values)
+                    break
             else:
-                value = value.strftime('%d-%m-%Y')
-                break
-        else:
-            break
-
-    note[argument] = value
-    print('Заметка обновлена:')
-    print('_____________________')
-    for key, values in note.items():
-        print(key, ':', values)
+                print('Заметок с таким именем пользователя или заголовком не найдено.')
+    except Exception as e:
+        print("Ошибка ввода, попробуйте ещё раз")
+        print(e)
 
 def delete_note():
     while True:
@@ -146,7 +154,7 @@ def delete_note():
                         break
                 if coincidences == 1:
                     print('-----------------------')
-                    print('Успешно удалено. Остались следующие заметки:')
+                    print('Успешно удалено.')
                     break
                 else:
                     print('Заметок с таким именем пользователя или заголовком не найдено.')
