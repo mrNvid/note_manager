@@ -13,43 +13,43 @@ def chek_date(value):
         if len(str(year)) == 4:
             return value
         else:
-            eror = 'Неверный формат, попробуйте ещё раз'
-            return eror
+            raise ValueError('Год должен быть в формате гггг')
     except Exception as e:
-        eror = "Ошибка ввода, попробуйте ещё раз"
-        return eror
+        print(e)
+        return e
 
 def create_note():
     keys = ['username', 'title', 'content', 'status', 'issue_date', 'created_date']
     variables = []
     print('Новая заметка:')
     while True:
-        variables.append(input('Введите имя:'))
-        if variables[len(variables) - 1]:
+        username = input('Введите имя:')
+        if username != "":
+            variables.append(username)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите заголовок заметки:'))
-        if variables[len(variables) - 1]:
+        title = input('Введите заголовок заметки:')
+
+        if title != "":
+            variables.append(title)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите текст заметки:'))
-        if variables[len(variables) - 1]:
+        content = input('Введите текст заметки:')
+        if content != "":
+            variables.append(content)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите статус заметки:'))
-        if variables[len(variables) - 1]:
+        status = input('Введите статус заметки:')
+        if status != "":
+            variables.append(status)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
         try:
@@ -118,10 +118,7 @@ def update_note(notes):
                         value = input()
                         if argument == 'issue_date':
                             value = chek_date(value)
-                            if type(value) == str:
-                                eror = chek_date(value)
-                                print(eror)
-                            else:
+                            if type(value) == date:
                                 value = value.strftime('%d-%m-%Y')
                                 break
                         else:
@@ -135,7 +132,7 @@ def update_note(notes):
             else:
                 print('Заметок с таким именем пользователя или заголовком не найдено.')
     except Exception as e:
-        print("Ошибка ввода, попробуйте ещё раз")
+        print(e)
 
 def delete_note():
     while True:

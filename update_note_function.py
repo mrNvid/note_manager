@@ -5,19 +5,18 @@ note = {'username': 'Андрей', 'title': 'Список дел', 'content': '
         'created_date': '11-01-2025'}
 
 def chek_date(value):
-        try:
-            value = value.split('-')
-            day, month, year = [int(item) for item in value]
-            value.reverse()
-            value = date(year, month,  day)
-            if len(str(year)) == 4:
-                return value
-            else:
-                eror = 'Неверный формат, попробуйте ещё раз'
-                return eror
-        except Exception as e:
-            eror = "Ошибка ввода, попробуйте ещё раз"
-            return eror
+    try:
+        value = value.split('-')
+        day, month, year = [int(item) for item in value]
+        value.reverse()
+        value = date(year, month, day)
+        if len(str(year)) == 4:
+            return value
+        else:
+            raise ValueError('Год должен быть в формате гггг')
+    except Exception as e:
+        print(e)
+        return e
 
 def update_note(note):
     print('Ваша заметка:')
@@ -36,10 +35,7 @@ def update_note(note):
         value = input()
         if argument == 'issue_date':
             value = chek_date(value)
-            if type(value) == str:
-                eror = chek_date(value)
-                print(eror)
-            else:
+            if type(value) == date:
                 value = value.strftime('%d-%m-%Y')
                 break
         else:

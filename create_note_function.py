@@ -4,32 +4,33 @@ variables = []
 def create_note():
     print('Новая заметка:')
     while True:
-        variables.append(input('Введите имя:'))
-        if variables[len(variables) - 1]:
+        username = input('Введите имя:')
+        if username != "":
+            variables.append(username)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите заголовок заметки:'))
-        if variables[len(variables) - 1]:
+        title = input('Введите заголовок заметки:')
+
+        if title != "":
+            variables.append(title)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите текст заметки:'))
-        if variables[len(variables) - 1]:
+        content = input('Введите текст заметки:')
+        if content != "":
+            variables.append(content)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
-        variables.append(input('Введите статус заметки:'))
-        if variables[len(variables) - 1]:
+        status = input('Введите статус заметки:')
+        if status != "":
+            variables.append(status)
             break
         else:
-            del variables[len(variables) - 1]
             print("Вы ничего не ввели. Попробуйте снова")
     while True:
         try:
