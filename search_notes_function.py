@@ -27,20 +27,21 @@ def search_notes(notes, keyword=None, status=None):
                         notes_view.append(note)
 
     return notes_view
-print('Вы можете ввести ключевое слово для поиска и/или нужный статус.')
-print('Оставьте поле пустым, если критерий не требуется')
-keyword = input('Введите ключевое слово:')
-status = input('Введите нужный статус:')
-notes_view = search_notes(notes, keyword, status)
-if len(notes_view) == 0:
-    if len(notes) == 0:
-        print('Список заметок пуст')
+if __name__ == "__main__":
+    print('Вы можете ввести ключевое слово для поиска и/или нужный статус.')
+    print('Оставьте поле пустым, если критерий не требуется')
+    keyword = input('Введите ключевое слово:')
+    status = input('Введите нужный статус:')
+    notes_view = search_notes(notes, keyword, status)
+    if len(notes_view) == 0:
+        if len(notes) == 0:
+            print('Список заметок пуст')
+        else:
+            print('Совпадений не найдено')
     else:
-        print('Совпадений не найдено')
-else:
-    for i in range(len(notes_view)):
-        print('Заметка №', i + 1)
-        note = notes_view[i]
-        for key, values in note.items():
-            print(key, ':', values)
-        print('_____________________')
+        for i in range(len(notes_view)):
+            print('Заметка №', i + 1)
+            note = notes_view[i]
+            for key, values in note.items():
+                print(key, ':', values)
+            print('_____________________')

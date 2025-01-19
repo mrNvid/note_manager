@@ -46,5 +46,5 @@ def update_note(note):
     print('_____________________')
     for key, values in note.items():
         print(key, ':', values)
-
-update_note(note)
+if __name__ == "__main__":
+    update_note(note)

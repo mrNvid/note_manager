@@ -16,4 +16,5 @@ def save_notes_to_file(notes, filename):
             b += 1
         file.write(f"______________________\n")
     file.close()
-save_notes_to_file(notes, filename)
+if __name__ == "__main__":
+     save_notes_to_file(notes, filename)

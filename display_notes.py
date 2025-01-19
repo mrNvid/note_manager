@@ -15,5 +15,5 @@ def display_notes(notes):
             for key, values in note.items():
                 print(key, ':', values)
             print('_____________________')
-
-display_notes(notes)
+if __name__ == "__main__":
+    display_notes(notes)

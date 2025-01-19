@@ -205,35 +205,35 @@ def search_notes(notes, keyword=None, status=None):
                 print(key, ':', values)
             print('_____________________')
 
-
-print('Добро пожаловать в менеджер заметок!')
-while True:
-    print('Выберете одно из доступных действий меню.')
-    print('________________________________________')
-    print('Меню действий:')
-    print('1. Создать новую заметку')
-    print('2. Показать все заметки')
-    print('3. Обновить заметку')
-    print('4. Удалить заметку')
-    print('5. Найти заметки')
-    print('6. Выйти из программы')
-    print('________________________________________')
-    user_input = input('Введите номер действия:')
-    print('Ваш выбор:', user_input)
-    print('________________________________________')
-    if user_input == '1':
-        create_note()
-    elif user_input == '2':
-        display_notes(notes)
-    elif user_input =='3':
-        update_note(notes)
-    elif user_input =='4':
-        delete_note()
-    elif user_input =='5':
-        search_notes(notes)
-    elif user_input =='6':
-        print('_____________________')
-        print('Программа завершена. Спасибо за использование!')
-        print('_____________________')
-        break
-    else: print('Ошибка ввода, попробуйте снова')
+if __name__ == "__main__":
+    print('Добро пожаловать в менеджер заметок!')
+    while True:
+        print('Выберете одно из доступных действий меню.')
+        print('________________________________________')
+        print('Меню действий:')
+        print('1. Создать новую заметку')
+        print('2. Показать все заметки')
+        print('3. Обновить заметку')
+        print('4. Удалить заметку')
+        print('5. Найти заметки')
+        print('6. Выйти из программы')
+        print('________________________________________')
+        user_input = input('Введите номер действия:')
+        print('Ваш выбор:', user_input)
+        print('________________________________________')
+        if user_input == '1':
+            create_note()
+        elif user_input == '2':
+            display_notes(notes)
+        elif user_input =='3':
+            update_note(notes)
+        elif user_input =='4':
+            delete_note()
+        elif user_input =='5':
+            search_notes(notes)
+        elif user_input =='6':
+            print('_____________________')
+            print('Программа завершена. Спасибо за использование!')
+            print('_____________________')
+            break
+        else: print('Ошибка ввода, попробуйте снова')

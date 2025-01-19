@@ -48,8 +48,9 @@ def create_note():
     variables.append(date.today())
     note = dict(zip(keys, variables))
     return note
-note = create_note()
-print('Ваша заметка:')
-print('_____________________')
-for key, values in note.items():
-    print(key,':', values)
+if __name__ == "__main__":
+    note = create_note()
+    print('Ваша заметка:')
+    print('_____________________')
+    for key, values in note.items():
+        print(key,':', values)
