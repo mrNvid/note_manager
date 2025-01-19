@@ -2,7 +2,7 @@ import yaml
 import os
 from fileinput import filename
 def load_notes_from_file(filename):
-    if os.path.isfile("filename.yaml"):
+    try:
         with open('filename.yaml', 'r', encoding='utf-8') as file:
             notes = yaml.safe_load(file)
         file.close()
@@ -17,7 +17,13 @@ def load_notes_from_file(filename):
                     print(key, ':', values)
                 print('_____________________')
         return notes
-    else:
-        print("Файл не существует")
+    except FileNotFoundError:
+        notes = open('filename.yaml', 'w+')
+        notes.close()
+        print("Файл не найден. Создан новый файл")
+    except UnicodeDecodeError:
+        print('Не удалось декодировать файл')
+    except PermissionError:
+        print('Ошибка доступа')
 if __name__ == "__main__":
     load_notes_from_file(filename)
