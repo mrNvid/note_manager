@@ -1,14 +1,16 @@
 from fileinput import filename
-import yaml
 
 
 def save_notes_to_file(notes, filename):
-    key_ru = ['Имя пользователя', 'Заголовок', 'Описание', 'Статус', 'Дедлайн', 'Дата создания']
-    with open('filename.yaml', 'w', encoding='utf-8') as file:
-        for i in range(len(notes)):
-            note = notes[i]
-            note = dict(zip(key_ru, list(note.values())))
-            yaml.dump([note], file, allow_unicode=True, sort_keys=False)
+    key_ru = ['Имя пользователя', 'Заголовок', 'Описание', 'Статус', 'Дата создания', 'Дедлайн']
+    file = open('filename', 'w', encoding='utf-8')
+    for i in range(len(notes)):
+        note = notes[i]
+        b = 0
+        for key, values in note.items():
+            file.write(f"{key_ru[b]}: {values}\n")
+            b += 1
+        file.write(f"---\n")
     file.close()
 if __name__ == "__main__":
     notes = [{'username': 'Андрей', 'title': 'Магазин', 'content': 'Помидоры купить', 'status': 'новый',
@@ -17,7 +19,6 @@ if __name__ == "__main__":
               'issue_date': '10-01-2025', 'created_date': '01-01-2025'},
              {'username': 'Эрик', 'title': 'Работа', 'content': 'Уволится', 'status': 'в процессе',
               'issue_date': '01-02-2025', 'created_date': '01-01-2025'}]
-
     save_notes_to_file(notes, filename)
 
 
