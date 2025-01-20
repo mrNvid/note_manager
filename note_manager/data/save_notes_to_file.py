@@ -1,9 +1,9 @@
-from fileinput import filename
+
 
 
 def save_notes_to_file(notes, filename):
     key_ru = ['Имя пользователя', 'Заголовок', 'Описание', 'Статус', 'Дата создания', 'Дедлайн']
-    file = open('filename', 'a', encoding='utf-8')
+    file = open('filename', 'w', encoding='utf-8')
     for i in range(len(notes)):
         note = notes[i]
         b = 0
@@ -19,4 +19,6 @@ if __name__ == "__main__":
               'issue_date': '10-01-2025', 'created_date': '01-01-2025'},
              {'username': 'Эрик', 'title': 'Работа', 'content': 'Уволится', 'status': 'в процессе',
               'issue_date': '01-02-2025', 'created_date': '01-01-2025'}]
-    save_notes_to_file(notes, filename)
+    save_notes_to_file(notes, "filename.txt")
+
+
