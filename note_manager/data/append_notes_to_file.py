@@ -2,19 +2,17 @@
 
 
 def save_notes_to_file(notes, filename):
-    try:
-        key_ru = ['Имя пользователя', 'Заголовок', 'Описание', 'Статус', 'Дата создания', 'Дедлайн']
-        file = open('filename', 'a', encoding='utf-8')
-        for i in range(len(notes)):
-            note = notes[i]
-            b = 0
-            for key, values in note.items():
-                file.write(f"{key_ru[b]}: {values}\n")
-                b += 1
-            file.write(f"---\n")
-        file.close()
-    except Exception as e:
-        print(e)
+    key_ru = ['Имя пользователя', 'Заголовок', 'Описание', 'Статус', 'Дата создания', 'Дедлайн']
+    file = open(filename, 'a', encoding='utf-8')
+    for i in range(len(notes)):
+        note = notes[i]
+        b = 0
+        for key, values in note.items():
+            file.write(f"{key_ru[b]}: {values}\n")
+            b += 1
+        file.write("---")
+        file.write(f"\n")
+    file.close()
 if __name__ == "__main__":
     notes = [{'username': 'Андрей', 'title': 'Магазин', 'content': 'Помидоры купить', 'status': 'новый',
               'issue_date': '18-01-2025', 'created_date': '13-01-2025'},
